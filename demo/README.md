@@ -30,4 +30,9 @@ $ docker-compose up
 # Visit grafana
 # username: admin / password: admin
 $ open localhost:3000
+
+$ Generating some data for the exporter
+$ curl localhost:8080
+$ curl localhost:8080
+$ curl localhost:8080
 ```

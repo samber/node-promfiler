@@ -2,9 +2,9 @@
 FROM node:8
 
 WORKDIR /app
-CMD node-promfile app.js
+CMD node-promfiler app.js
 
 COPY . /app
 
-RUN npm install -g promfile && \
+RUN npm install -g promfiler && \
     npm install
