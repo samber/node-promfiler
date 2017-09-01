@@ -100,12 +100,6 @@ server.on('clientError', (err, socket) => {
   socket.end('HTTP/1.1 400 Bad Request\r\n\r\n');
 });
 
-server.listen(port, hostname, () => {
-    initProfiling();
-    executeApp();
-});
-
-
 const executeApp = () => {
     const appModule = path.resolve(path.join(process.argv[2]));
     console.info("\n");
@@ -118,3 +112,12 @@ const executeApp = () => {
     process.argv.shift();
     require(appModule);
 }
+
+const mainPromfiler = () => {
+    server.listen(port, hostname, () => {
+        initProfiling();
+        executeApp();
+    });
+};
+
+mainPromfiler();
