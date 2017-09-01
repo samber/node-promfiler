@@ -1,6 +1,6 @@
 {
   "name": "promfiler",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Expose an http endpoint for exporting node.js v8 profiling",
   "keywords": [
     "profiling",

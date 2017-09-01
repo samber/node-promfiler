@@ -36,6 +36,8 @@ const describe = (doc, parents, depth) => {
             return;
         if (parents + doc.functionName === "(root)#(program)")
             return;
+        if (doc.functionName === "slash_metrics_handler")
+            return;
 
         //        console.log('-'.repeat(depth) + ' ' + doc.signature, doc.hitCount);
         //        console.log(parents + doc.functionName, doc.hitCount);

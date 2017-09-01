@@ -1,5 +1,5 @@
 
-FROM node:8
+FROM node:7
 
 WORKDIR /app
 CMD node-promfiler app.js

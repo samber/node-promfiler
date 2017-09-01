@@ -13,7 +13,7 @@ app.get('/', function (req, res) {
     long_run(
         Math.floor(Math.random() * 100),
         Math.floor(Math.random() * 100),
-        Math.floor(Math.random() * 100000000)   // 100m
+        Math.floor(Math.random() * 1000000)   // 100m
     );
     res.send('Hello World!');
 });
