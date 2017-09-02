@@ -13,6 +13,8 @@ const resetProfiling = () => {
     timeoutProfiling = setTimeout(resetProfiling, timeoutProfilingDuration);
     const profile = profiler.stopProfiling();
     profile.delete();
+    // due to memory leaks
+    profiler.deleteAllProfiles();
     profiler.startProfiling();
     return profile;
 }

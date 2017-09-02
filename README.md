@@ -19,3 +19,7 @@ Node value:
 - A node **real weight** is equal to the virtual weight, plus the sum of the children real weight (recursion).
 - The virtual weight is equal to the real weight, minus all children real weight.
 - We only export virtual weight. The real weight is implicit and can be computed easily.
+
+## Troubleshooting
+
+I observed huge memory, increasing over long running profling. This is due to v8-profiler library (and prabably v8 :trollface:).
