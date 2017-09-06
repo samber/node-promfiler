@@ -51,7 +51,7 @@ Install [grafana-flamegraph-panel](https://github.com/samber/grafana-flamegraph-
 ```
 $ promfiler demo/app.js
 
-$ curl localhost:9142
+$ curl localhost:9142/metrics
 ```
 
 ```
