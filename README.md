@@ -2,7 +2,9 @@
 
 ## Building flame graphs
 
-Please read: http://www.brendangregg.com/flamegraphs.html
+[![Flame Graph Example](https://media.giphy.com/media/l41JMjBaxrZw1bqpi/giphy.gif)](http://spiermar.github.io/d3-flame-graph/)
+
+Please read [Brendan Gregg's post](http://www.brendangregg.com/flamegraphs.html)
 
 Flame graph are oriented graphs (like a tree).
 
@@ -44,6 +46,36 @@ scrape_configs:
 
 Install [grafana-flamegraph-panel](https://github.com/samber/grafana-flamegraph-panel) into your Grafana instance.
 
+## Output format
+
+```
+$ promfiler demo/app.js
+
+$ curl localhost:9142
+```
+
+```
+# HELP profiling test
+# TYPE profiling gauge
+profiling{signature="(root)"} 0
+profiling{signature="(root)#parserOnHeadersComplete"} 4
+profiling{signature="(root)#parserOnHeadersComplete#parserOnIncoming"} 2
+profiling{signature="(root)#parserOnHeadersComplete#parserOnIncoming#emit"} 1
+profiling{signature="(root)#parserOnHeadersComplete#parserOnIncoming#emit#emitTwo"} 1
+profiling{signature="(root)#parserOnHeadersComplete#parserOnIncoming#emit#emitTwo#http.createServer"} 2
+profiling{signature="(root)#parserOnHeadersComplete#parserOnIncoming#emit#emitTwo#http.createServer#end"} 3
+profiling{signature="(root)#parserOnHeadersComplete#parserOnIncoming#emit#emitTwo#http.createServer#end#_implicitHeader"} 0
+profiling{signature="(root)#parserOnHeadersComplete#parserOnIncoming#emit#emitTwo#http.createServer#end#_implicitHeader#writeHead"} 1
+profiling{signature="(root)#parserOnHeadersComplete#parserOnIncoming#emit#emitTwo#http.createServer#end#_implicitHeader#writeHead#_storeHeader"} 0
+profiling{signature="(root)#parserOnHeadersComplete#parserOnIncoming#emit#emitTwo#http.createServer#end#_implicitHeader#writeHead#_storeHeader#utcDate"} 0
+profiling{signature="(root)#parserOnHeadersComplete#parserOnIncoming#emit#emitTwo#http.createServer#end#_implicitHeader#writeHead#_storeHeader#utcDate#exports._unrefActive"} 0
+profiling{signature="(root)#parserOnHeadersComplete#parserOnIncoming#emit#emitTwo#http.createServer#end#_implicitHeader#writeHead#_storeHeader#utcDate#exports._unrefActive#insert"} 0
+profiling{signature="(root)#parserOnHeadersComplete#parserOnIncoming#emit#emitTwo#http.createServer#end#_implicitHeader#writeHead#_storeHeader#utcDate#exports._unrefActive#insert#createTimersList"} 1
+profiling{signature="(root)#parserOnHeadersComplete#parserOnIncoming#emit#emitTwo#http.createServer#end#write"} 1
+profiling{signature="(root)#parserOnHeadersComplete#parserOnIncoming#emit#emitTwo#http.createServer#end#write#_send"} 0
+...
+```
+
 ## Troubleshooting
 
-I observed huge memory leaks, increasing over long running profling. This is due to v8-profiler library (and probably v8 :trollface:).
+I observed huge memory leaks, increasing over long running profling. This is due to v8-profiler library (and probably v8 :trollface:). You should not use it in production until it's fixed (or contribute !).
