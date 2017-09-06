@@ -1,4 +1,4 @@
-# Profiling exporter to Prometheus for Node.js
+# Live profiling exporter for Node.js and Prometheus
 
 ## Building flame graphs
 
@@ -19,6 +19,32 @@ Node value:
 - A node **real weight** is equal to the virtual weight, plus the sum of the children real weight (recursion).
 - The virtual weight is equal to the real weight, minus all children real weight.
 - We only export virtual weight. The real weight is implicit and can be computed easily.
+
+## HowTo
+
+### Running
+
+```
+$ npm install -g promfiler
+$ promfiler app.js
+```
+
+This exposes a /metrics route on 0.0.0.0:9142
+
+### Configuring Prometheus
+
+```
+scrape_configs:
+  - job_name: 'test'
+    scrape_interval: 30s
+    scrape_timeout: 3s
+    static_configs:
+     - targets: ['localhost:9142']
+```
+
+### Visualize flame graphs
+
+Install [grafana-flamegraph-panel](https://github.com/samber/grafana-flamegraph-panel) into your Grafana instance.
 
 ## Troubleshooting
 
