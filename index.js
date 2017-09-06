@@ -13,8 +13,6 @@ const resetProfiling = () => {
     timeoutProfiling = setTimeout(resetProfiling, timeoutProfilingDuration);
     const profile = profiler.stopProfiling();
     profile.delete();
-    // due to memory leaks
-    profiler.deleteAllProfiles();
     profiler.startProfiling();
     return profile;
 }
@@ -32,6 +30,7 @@ const clear = () => {
 
 const describe = (doc, parents, depth) => {
     if (doc.functionName) {
+        // @todo: add a promfiler argument for verbose mode
         if (parents + doc.functionName === "(root)#(idle)")
             return;
         if (parents + doc.functionName === "(root)#(garbage collector)")
@@ -41,13 +40,9 @@ const describe = (doc, parents, depth) => {
         if (doc.functionName === "slash_metrics_handler")
             return;
 
-        //        console.log('-'.repeat(depth) + ' ' + doc.signature, doc.hitCount);
-        //        console.log(parents + doc.functionName, doc.hitCount);
         gauge.set({ signature: parents + doc.functionName }, doc.hitCount);
         parents += doc.functionName + "#";
     }
-//    else
-//        console.log('-'.repeat(depth) + ' ' + doc.url, doc.hitCount);
 
     if (doc.children)
         for (var i = 0; i < doc.children.length; i++)
@@ -90,7 +85,7 @@ const server = http.createServer((req, res) => {
 <p><a href="/metrics">Metrics</a></p>
 </body>
 </html>`);
-	return;
+        return;
     }
 
     res.statusCode = 404;
