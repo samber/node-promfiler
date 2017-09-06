@@ -8,8 +8,6 @@ Flame graph are oriented graphs (like a tree).
 
 Flame graph are useful for analysing the time spent on each node (or function execution, in case of program profiling).
 
-Flame graph are like a tree: Russian Dolls with multiple children.
-
 Nodes have a "signature" (even if these are not exit nodes). This is the path from the <root> node to itself.
 
 A signature shows only the depth dimension. Multiple signatures shape a graph.
@@ -48,4 +46,4 @@ Install [grafana-flamegraph-panel](https://github.com/samber/grafana-flamegraph-
 
 ## Troubleshooting
 
-I observed huge memory, increasing over long running profling. This is due to v8-profiler library (and prabably v8 :trollface:).
+I observed huge memory leaks, increasing over long running profling. This is due to v8-profiler library (and probably v8 :trollface:).
