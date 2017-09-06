@@ -22,4 +22,4 @@ Node value:
 
 ## Troubleshooting
 
-I observed huge memory, increasing over long running profling. This is due to v8-profiler library (and prabably v8 :trollface:).
+I observed huge memory leaks, increasing over long running profling. This is due to v8-profiler library (and prabably v8 :trollface:).
