@@ -1,4 +1,4 @@
-# Live profiling exporter for Node.js and Prometheus
+# Live profiling exporter for Node.js, Prometheus and Grafana
 
 ## Building flame graphs
 
