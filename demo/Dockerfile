@@ -2,7 +2,7 @@
 FROM node:7
 
 WORKDIR /app
-CMD node-promfiler app.js
+CMD node-promfiler --sampling-interval=100 app.js
 
 COPY . /app
 
