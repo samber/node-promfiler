@@ -4,7 +4,7 @@
 ## Build
 
 ```
-$ docker build -t samber/node-promfile-demo .
+$ docker build --no-cache -t samber/node-promfile-demo .
 $ docker push samber/node-promfile-demo
 ```
 

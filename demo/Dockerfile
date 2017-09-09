@@ -6,5 +6,5 @@ CMD node-promfiler --sampling-interval=100 app.js
 
 COPY . /app
 
-RUN npm install -g promfiler@0.5.0 && \
+RUN npm install -g promfiler && \
     npm install
