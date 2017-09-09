@@ -6,5 +6,5 @@ CMD node-promfiler app.js
 
 COPY . /app
 
-RUN npm install -g promfiler@0.4.0 && \
+RUN npm install -g promfiler@0.5.0 && \
     npm install
