@@ -26,7 +26,7 @@ Node value:
 $ npm install -g promfiler
 ```
 
-## Running from the cli
+## Running as a separate cli
 
 This execution mode exposes a HTTP endpoint for Prometheus metric sraping (`0.0.0.0:9142/metrics` by default).
 
@@ -50,7 +50,7 @@ This execution mode exposes a HTTP endpoint for Prometheus metric sraping (`0.0.
     $ promfiler --port 9090 ./app.js foo bar
 ```
 
-## Using Promfiler as a Node.JS library
+## Running as a Node.JS library
 
 Promfiler can start an external http server or let you reuse an existing Express/Hapi/Koa/... instance.
 
@@ -60,12 +60,12 @@ Promfiler can start an external http server or let you reuse an existing Express
 const promfiler = require('promfiler');
 
 promfiler.startServer({
-  hostname: '0.0.0.0',                  // optional
-  port: 9142,                           // optional
-  path: '/metrics',                     // optional
+  hostname: '0.0.0.0',                  // optional, default 0.0.0.0
+  port: 9142,                           // optional, default 9142
+  path: '/metrics',                     // optional, default /metrics
 }).then( (uri) => {
   promfiler.startProfiling({
-    samplingInterval: 1000,             // optional
+    samplingInterval: 1000,             // optional, default 1000
   });
 
   console.log("Profiler listening on %s", uri);
@@ -87,7 +87,7 @@ app.get('/metrics', function (req, res) {
 
 app.listen(8080, function () {
   promfiler.startProfiling({
-    samplingInterval: 1000,             // optional
+    samplingInterval: 1000,             // optional, default 1000
   });
 });
 ```
