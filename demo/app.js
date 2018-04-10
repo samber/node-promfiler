@@ -18,7 +18,7 @@ app.get('/', function (req, res) {
     res.send('Hello World!');
 });
 
-const port = process.env.PORT || 8080;
+const port = process.env.HTTP_PORT || 8080;
 app.listen(port, function () {
     console.log('Demo app listening on port ' + port);
 });
