@@ -4,14 +4,14 @@
 ## Build
 
 ```
-$ docker build --no-cache -t samber/node-promfile-demo .
-$ docker push samber/node-promfile-demo
+$ docker build --no-cache -t samber/node-promfiler-demo .
+$ docker push samber/node-promfiler-demo
 ```
 
 ## Run
 
 ```
-$ docker run --rm -it -p 8080:8080 -p 9142:9142 samber/node-promfile-demo
+$ docker run --rm -it -p 8080:8080 -p 9142:9142 samber/node-promfiler-demo
 
 # Open hello-world app
 $ open localhost:8080
